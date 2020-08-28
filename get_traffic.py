@@ -6,31 +6,37 @@ import pickle
 import datetime as dt
 from apscheduler.schedulers.blocking import BlockingScheduler
 import ssl
+import requests
 
 def get_traffic():
-    api_key = "QQTC3sTAhfSctpCvqZZ2rtMDQLfomXa6JCJ2y4YOv6E"
+    app_id = "sfKZJRyGP8KpHvHWsqzO"
+    app_code = "G7-OZu4Rml9nM7kBPmDBqH2qHQqAbjsYuDbtVNtQUIs"
     fname=str(dt.datetime.now())[:19].replace(":","-")
-    topLeft1 = "-7.604302"
-    topLeft2 = "110.191991"
-    buttomRight1 = "-7.964878"
-    buttomRight2 = "110.530623"
-    
-    base = "https://traffic.ls.hereapi.com/traffic/6.2/flow.json"+\
-    "?bbox="+topLeft1+"%2C"+topLeft2+"%3B"+buttomRight1+"%2C"+buttomRight2+"&"+\
-    "apiKey="+ api_key
+    base="https://traffic.hereapi.cn/traffic/6.2/flow.xml"+\
+    "?app_id="+app_id+\
+    "&app_code="+app_code+\
+    "&bbox=-7.604302,110.191991;-7.964878,110.530623"+\
+    "&responseattributes=sh,fc"
 
-    try:
-        response = urlopen(base)
-        data=json.load(response)
-        with open(fname+".p", 'wb') as fp:
-            pickle.dump(data, fp, protocol=pickle.HIGHEST_PROTOCOL)
-        print("Success "+fname)
-    except:
-        print("Failed "+fname)
+
+    topLeft = "-7.604302, 110.191991"
+    buttomRight = "-7.964878, 110.530623"
+    gcontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+    response = urlopen(base,context=gcontext)
+    data=json.load(response)
+    with open(fname+".p", 'wb') as fp:
+        pickle.dump(data, fp, protocol=pickle.HIGHEST_PROTOCOL)
+    print("Success "+fname)
+    # try:
+    #     gcontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+    #     response = urlopen(base,context=gcontext)
+    #     data=json.load(response)
+    #     with open(fname+".p", 'wb') as fp:
+    #         pickle.dump(data, fp, protocol=pickle.HIGHEST_PROTOCOL)
+    #     print("Success "+fname)
+    # except:
+    #     print("Failed "+fname)
 
 if __name__=="__main__":
-  sched = BlockingScheduler()
-  sched.add_job(get_traffic, 'cron', day_of_week='*', hour='*', 
-                minute='0,30')
-  sched.start()
-#     get_traffic()
+
+  get_traffic()
