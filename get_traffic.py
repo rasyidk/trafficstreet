@@ -28,8 +28,8 @@ def get_traffic():
         print("Failed "+fname)
 
 if __name__=="__main__":
-#   sched = BlockingScheduler()
-#   sched.add_job(get_traffic, 'cron', day_of_week='*', hour='*', 
-#                 minute='*')
-#   sched.start()
-    get_traffic()
+  sched = BlockingScheduler()
+  sched.add_job(get_traffic, 'cron', day_of_week='*', hour='*', 
+                minute='*')
+  sched.start()
+    # get_traffic()
