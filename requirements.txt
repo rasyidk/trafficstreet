@@ -1,2 +1,0 @@
-APScheduler==3.6.3
-pickleshare==0.7.5
