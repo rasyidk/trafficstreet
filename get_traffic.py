@@ -30,6 +30,6 @@ def get_traffic():
 if __name__=="__main__":
   sched = BlockingScheduler()
   sched.add_job(get_traffic, 'cron', day_of_week='*', hour='*', 
-                minute='0,30')
+                minute='0,05')
   sched.start()
 #     get_traffic()
