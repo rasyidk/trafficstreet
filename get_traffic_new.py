@@ -8,7 +8,7 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 import ssl
 
 def get_traffic():
-    api_key = "HHPUzIYXP_BGXaNgqQ3gn_JJ1g5_j92Q1Y5RfBP_-EU"
+    api_key = "QQTC3sTAhfSctpCvqZZ2rtMDQLfomXa6JCJ2y4YOv6E"
     fname=str(dt.datetime.now())[:19].replace(":","-")
     topLeft1 = "-7.604302"
     topLeft2 = "110.191991"
@@ -33,4 +33,4 @@ if __name__=="__main__":
   sched.add_job(get_traffic, 'cron', day_of_week='*', hour='*', 
                 minute='0,30')
   sched.start()
-#   get_traffic()
+#     get_traffic()
