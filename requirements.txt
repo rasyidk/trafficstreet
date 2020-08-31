@@ -14,3 +14,4 @@ Werkzeug==0.16.0
 gunicorn==19.4.5
 APScheduler==3.6.3
 pickleshare==0.7.5
+pandas==0.25.1
