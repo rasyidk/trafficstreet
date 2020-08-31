@@ -1,1 +1,1 @@
-worker: python get_traffic.py
+worker: python get_traffic_new.py
