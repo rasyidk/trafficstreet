@@ -7,7 +7,7 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 import ssl
 
 def get_traffic():
-    api_key = "QQTC3sTAhfSctpCvqZZ2rtMDQLfomXa6JCJ2y4YOv6E"
+    api_key = "D3hloAzbNbTu3Lg6Fbbl4KBC6OPCE9k_qq3EayI-J9c"
     fname=str(dt.datetime.now())[:19].replace(":","-")
     topLeft1 = "-7.604302"
     topLeft2 = "110.191991"
